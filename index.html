@@ -1,10 +1,153 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>我的网站</title>
-</head>
-<body>
-  <h1>你好，我的网站上线了！</h1>
-  <p>这是我用 GitHub 搭建的第一个网站。</p>
-</body>
-</html>
+export default function StockNewsSite() {
+  const news = [
+    {
+      company: '英伟达 NVIDIA',
+      tag: 'AI芯片',
+      title: '大型云厂商继续加单 AI GPU',
+      summary: '市场需求持续增长，多家机构上调全年营收预期。',
+      impact: '利好'
+    },
+    {
+      company: '特斯拉 Tesla',
+      tag: '新能源',
+      title: '储能业务订单创新高',
+      summary: '海外储能市场扩张，盈利能力预计提升。',
+      impact: '中长期利好'
+    },
+    {
+      company: '台积电 TSMC',
+      tag: '半导体',
+      title: '先进制程产能持续满载',
+      summary: '3nm 与 2nm 订单需求旺盛。',
+      impact: '利好'
+    },
+    {
+      company: '比亚迪 BYD',
+      tag: '新能源汽车',
+      title: '海外销量持续增长',
+      summary: '欧洲与东南亚市场扩张加速。',
+      impact: '利好'
+    }
+  ]
+
+  return (
+    <div className="min-h-screen bg-black text-white p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight">
+              每日股市公司利好资讯
+            </h1>
+            <p className="text-gray-400 mt-2">
+              实时追踪热门公司、行业动态与资本市场机会
+            </p>
+          </div>
+
+          <div className="flex gap-3">
+            <input
+              type="text"
+              placeholder="搜索公司..."
+              className="bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 outline-none w-64"
+            />
+            <button className="bg-white text-black px-5 py-3 rounded-2xl font-semibold hover:scale-105 transition">
+              搜索
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 shadow-xl">
+            <div className="text-gray-400 text-sm">今日利好公司</div>
+            <div className="text-4xl font-bold mt-2">28</div>
+          </div>
+
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 shadow-xl">
+            <div className="text-gray-400 text-sm">热门行业</div>
+            <div className="text-2xl font-bold mt-2">AI + 半导体</div>
+          </div>
+
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 shadow-xl">
+            <div className="text-gray-400 text-sm">资金关注度</div>
+            <div className="text-2xl font-bold mt-2 text-green-400">持续流入</div>
+          </div>
+
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 shadow-xl">
+            <div className="text-gray-400 text-sm">更新时间</div>
+            <div className="text-2xl font-bold mt-2">实时更新</div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {news.map((item, index) => (
+            <div
+              key={index}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-green-400 transition shadow-2xl"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="text-2xl font-bold">{item.company}</div>
+                  <div className="text-sm text-gray-400 mt-1">{item.tag}</div>
+                </div>
+
+                <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-xl text-sm font-semibold">
+                  {item.impact}
+                </div>
+              </div>
+
+              <h2 className="text-xl font-semibold mb-3">
+                {item.title}
+              </h2>
+
+              <p className="text-gray-300 leading-7">
+                {item.summary}
+              </p>
+
+              <div className="mt-5 flex justify-between items-center">
+                <span className="text-gray-500 text-sm">
+                  更新时间：今日
+                </span>
+
+                <button className="bg-white text-black px-4 py-2 rounded-xl font-semibold hover:scale-105 transition">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+          <h2 className="text-3xl font-bold mb-4">
+            网站后续可升级功能
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div className="bg-black rounded-2xl p-5 border border-zinc-800">
+              <div className="text-xl font-semibold mb-2">AI新闻总结</div>
+              <p className="text-gray-400 text-sm">
+                自动提炼公司利好信息与核心逻辑
+              </p>
+            </div>
+
+            <div className="bg-black rounded-2xl p-5 border border-zinc-800">
+              <div className="text-xl font-semibold mb-2">实时股票数据</div>
+              <p className="text-gray-400 text-sm">
+                接入美股/A股/港股行情 API
+              </p>
+            </div>
+
+            <div className="bg-black rounded-2xl p-5 border border-zinc-800">
+              <div className="text-xl font-semibold mb-2">用户订阅提醒</div>
+              <p className="text-gray-400 text-sm">
+                监控关注公司并推送利好消息
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer className="text-center text-gray-500 mt-12 pb-8">
+          © 2026 每日股市公司利好资讯 · Powered by GitHub Pages
+        </footer>
+      </div>
+    </div>
+  )
+}
